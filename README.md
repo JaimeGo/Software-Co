@@ -1,24 +1,21 @@
-# README
+# Software & Co
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails application developed with my group in the "Software Development" course at PUC. 
+
+It is available in Heroku at the following url:
+
+https://softwarecia-demo.herokuapp.com/
+
+The purpose of the application is to provide an interface for notaries, real state agencies and lawyers to communicate, during the transference of property, and in particular as it relates to deeds.
+
+The other members of the team aside from me, Jaime González, were:
 
 Things you may want to cover:
 
-* Ruby version
+* Ignacio Guridi
 
-* System dependencies
+* Cristopher Gutiérrez
 
-* Configuration
+* Ítalo Contreras
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
