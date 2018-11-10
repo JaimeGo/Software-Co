@@ -1,0 +1,90 @@
+</br>
+<div class="container">
+  <p>
+    <strong>Nombre:</strong>
+    <%= @deed.identifier %>
+  </p>
+  
+  <p>
+    <strong>Fecha Inicio:</strong>
+    <%= @deed.start_date %>
+  </p>
+
+  <p>
+    <strong>Duración:</strong>
+    <%= @deed.duration.to_s + ' días'%>
+  </p>
+
+  <p>
+    <strong>Fecha expiración:</strong>
+    <%= @deed.expiration_date %>
+  </p>
+
+  <p>
+    <strong>Inmobiliaria:</strong>
+    <%= @deed.real_estate.full_name %>
+  </p>
+
+  <p>
+    <strong>Abogado:</strong>
+    <%= @deed.lawyer.full_name %>
+  </p>
+
+  <p>
+    <strong>Estado actual:</strong>
+    <%= @deed.steps.order('created_at').last.state %>
+  </p>
+</div>
+<div class="container">
+<h3>Historial:</h3>
+
+<div class="container">
+<% path = "/deeds/#{@deed.id.to_s}/steps" %>
+<%= form_tag(path, method: 'post') do %>
+    <div class='field'>
+        <%= label(:step, :state, 'Nuevo estado') %>
+        <%= select(:step, :state, Step.states.keys, prompt: 'Select') %>
+    </div>
+    <%#=hidden_field(:step, :deed_id, value: @deed.id)%>
+    <%= submit_tag('Agregar') %>
+<% end %>
+<table class="table table-hover bg-white thead-dark">
+  <thead>
+    <tr>
+      <th>Fecha</th>
+      <th>En</th>
+      <th>Hecho por</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+</div>
+  <tbody>
+    <% if true %>
+    <% @steps.order('created_at').reverse.each do |step| %>
+      <tr>
+        <td><%= step.created_at.strftime('%Y-%m-%d') %></td>
+        <td><%= step.state %></td>
+        <td><%= step.user.full_name %></td>
+        <% if @steps.size > 1 %>
+          <td>
+           <%= link_to 'Eliminar', deed_step_path(@deed, step), method: :delete, data: { confirm: 'Estás seguro?' } %>  
+          </td>
+        <% end %>    
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
+<div style="margin-left: 100px;">
+  
+
+<%#= link_to 'Cambiar estado', new_step_path %>
+
+
+<div class="container text-center">
+<%= link_to 'Editar', edit_deed_path(@deed), class: 'btn btn-dark' %>
+<%= link_to 'Atrás', deeds_path, class: 'btn btn-dark' %>
+</div>

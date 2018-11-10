@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Software & Cia.</title>
+    <%= csrf_meta_tags %>
+
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark justify-content-between">
+      <ul class="navbar-nav static-top">
+        <li class="nav-item">
+          <a class="navbar-brand" href="/">
+           <%= image_tag "logo.png" %>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href="/">Software & Cia.</a>
+          <a class="navbar-text text-white small">Tu DeedTracker favorito</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link" href="/deeds">Mis Escrituras</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/edit">Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_out" data-method="delete">Salir</a>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_in">Ingresar</a>
+          </li>
+        <% end %>
+        <%= form_tag(deeds_path, method: :get) do %>
+        <input class="form-control mr-sm-2" id="searchbar" name="query" type="text" placeholder="Buscar..." aria-label="Search">
+        <% end %>
+        <!-- <li>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+          </form> -->
+        </li>
+      </ul>
+
+    </nav>
+
+
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <%= yield %>
+
+    <!-- <p align="right">
+    <% if user_signed_in? %>
+      Ingresado como <strong><%= current_user.email %></strong>.
+    <% end %>
+    </p> -->
+
+  </body>
+</html>

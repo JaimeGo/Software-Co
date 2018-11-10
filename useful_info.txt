@@ -1,0 +1,54 @@
+
+# generate history
+rails g scaffold Step user:references deed:references executed_on:datetime status:integer 
+
+
+feedback:
+
+agregar proyecto a escrituras
+quitar abogado e inmobiliaria de el index escrituras
+
+steps: 
+- desharcodear fechas estado
+- sacar id inmobiliaria
+. invertir orden lista steps
+
+ordenar lista deeds por fecha vencimiento (opcion: cuenta regresiva (60dias))
+
+ordenar lista steps por fecha
+
+funcionalidad buscar
+
+mostrar deeds activas (antes de inmobiliaria) ticket
+vista deeds vencidas
+
+poner fecha de expiracion recien cuando se firma en notaria por cliente o inmobiliaria
+
+30-05-2018
+ - buscador - christopher
+ - notificaciones (cambio de estado, envio cotizacion)- jaime
+
+ - deeds activas vs desactivadas -
+ - desharcodear fechas estado
+ - alerta en rojo escritura
+
+ - ordenar lista deeds por vencimiento
+
+ - testing automático
+ - 
+
+sprints Ignacio:
+
+    - ordenar list steps por fecha
+    - quitar abogado e inmobiliaria de el index escrituras
+    - sacar id inmobiliaria
+    - invertir orden lista steps
+    - feedback presentación (real_estate)
+    - refactoring (harto) nested steps, realstate -> real_estate, boton eliminar bug
+    - removed add other lawyer
+    - Redirección al aliminar estado arreglada
+    - duracion y dias restantes añadidos
+    - start date no existente
+    - añadir fecha al firmar en notaría
+
+por hacer: put the start date when deed is signed

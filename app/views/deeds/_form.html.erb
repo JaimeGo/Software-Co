@@ -1,0 +1,57 @@
+<% path = '/deeds/' %>
+<% path += deed.id.to_s unless deed.new_record? %>
+
+
+<div class="container card" style="width: 28rem;">
+
+<%= form_tag(path, method: 'post') do %>
+    <% unless deed.new_record? %>
+        <input name=_method value='patch' type='hidden' />
+    <% end %>
+
+    <div class='form-group'>
+        <%= label(:deed, :identifier, 'Identificador') %><br />
+        <%= text_field(:deed, :identifier, options={class: 'form-control'}) %>
+    </div>
+
+    <% unless deed.new_record? %>
+      <div class='form-group'>
+          <%= label(:deed, :start_date, 'Fecha de Inicio') %><br />
+          <%= date_select(:deed, :start_date, options={class: 'form-control'}) %>
+      </div>
+    <% end %>
+
+    <div class='form-group'>
+        <%= label(:deed, :duration, 'Duración en días') %><br />
+        <%= text_field(:deed, :duration, options={class: 'form-control'}) %>
+    </div>
+
+    <div class='form-group'>
+        <%= label_tag(:lawyer_mail, 'Email abogado') %><br />
+        <% if deed.new_record? %>
+          <%= text_field_tag(:lawyer_mail, value=nil, options={class: 'form-control'}) %>
+        <% else %>
+          <%= text_field_tag(:lawyer_mail, deed.lawyers[0].email, options={class: 'form-control'}) %>
+        <% end %>
+    </div>
+
+    <% if deed.new_record? %>
+        <%= submit_tag('Crear', options={class: 'btn btn-dark'}) %>
+    <% elsif false %>
+
+      <div class='form-group'>
+          <%= label_tag(:autorizar, 'Para dar acceso a otro usuario ingresa un email') %>
+          <%= text_field_tag(:new_authorized_email) %>
+      </div>
+
+    <% else %>
+
+      <div class='form-group text-right'>
+        <%= submit_tag('Guardar', options={class: 'btn btn-dark'}) %>
+      </div>
+
+    <% end %>
+  <div class='form-group'>
+  </div>
+<% end %>
+</div>

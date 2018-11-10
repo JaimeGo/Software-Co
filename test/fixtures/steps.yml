@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  deed: one
+  executed_on: 2018-05-20 15:32:35
+  status: 1
+
+two:
+  user: two
+  deed: two
+  executed_on: 2018-05-20 15:32:35
+  status: 1

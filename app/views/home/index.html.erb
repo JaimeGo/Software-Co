@@ -1,0 +1,14 @@
+<div>
+  <div class="thumbnail">
+    <%= image_tag("house-keys.jpg", :alt => "Image not found", :class => "img-fluid") %>
+    <div class="over-text">
+      <p class="text-center">Software & Cia.</p>
+      <p>Toda la información de las escrituras en un lugar</p>
+      <% if !user_signed_in? %>
+      <form method="get" action="/users/sign_up">
+        <button type="submit" class="btn btn-dark btn-lg">Registrarse</button>
+      </form>
+      <% end %>
+    </div>
+  </div>
+</div>

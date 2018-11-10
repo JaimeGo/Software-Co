@@ -1,0 +1,17 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h3>Hola <%= @lawyer.full_name %></h3>
+    <p>
+      <%= @real_estate.full_name %> te ha asignado la escritura <%= @deed.identifier %><br>
+    </p>
+    <p>
+      Para ver la escritura, solo sigue este <a href="<%= @url %>"> link </a>.
+    </p>
+    <p>Muchas gracias y buen día!</p>
+  </body>
+</html>

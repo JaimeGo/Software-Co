@@ -1,0 +1,48 @@
+<h1 class='text-center'>Mis escrituras</h1>
+
+<div class="container">
+<table class="table table-hover bg-white thead-dark">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Estado</th>
+      <!-- <th>Fecha de expiración</th> -->
+      <th>Días restantes</th>
+      <!-- <th>Último abogado autorizado</th> -->
+      <!-- <th>Inmobiliaria</th> -->
+      <!-- <th>Id escritura</th> -->
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="t_body" >
+    <% @deeds.sort_by {|deed| [deed.days_left.nil? ? 1 : 0, deed.days_left || 0 ] } .each do |deed| %>
+      <% unless deed.ended %>
+        <tr class="<%=deed.less_than_twenty ? 'expiring':'not_expiring' %>">
+          <td><%= deed.identifier %></td>
+          <td><%= deed.steps.order('created_at').last.state if deed.steps.order('created_at').last%></td>
+          <td><%= deed.days_left %></td>
+          <!-- <td><%= deed.lawyers[0].full_name %></td> -->
+          <!-- <td><%= deed.lawyers[-1].first_name %></td> -->
+          <!-- <td><%= deed.real_estate.full_name %></td> -->
+          <!-- <td><%= deed.id %></td> -->
+          <td><%= link_to 'Ver Historial', deed %></td>
+          <td><%= link_to 'Editar', edit_deed_path(deed) %></td>
+          <td><%= link_to 'Eliminar', deed, method: :delete, data: { confirm: 'Estás seguro?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<div class='container'>
+  <div class='row'>
+      <form method="get" action="/deeds/new">
+        <button type="submit" style='margin-right:30px' class="btn btn-dark">Nueva escritura</button>
+      </form>
+      <form method="get" action="/deeds/old">
+        <button type="submit" class="btn btn-dark">Escrituras antiguas</button>
+      </form>
+  </div>
+</div>
