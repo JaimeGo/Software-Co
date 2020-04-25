@@ -10,8 +10,6 @@ The purpose of the application is to provide an interface for notaries, real sta
 
 The other members of the team aside from me, Jaime González, were:
 
-Things you may want to cover:
-
 * Ignacio Guridi
 
 * Cristopher Gutiérrez
